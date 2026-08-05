@@ -3,6 +3,7 @@ package com.wellsfargo.counselor.entity;
 import jakarta.persistence.*;
 
 import java.util.List;
+import java.util.ArrayList;
 
 @Entity
 public class Portfolio {
@@ -19,10 +20,10 @@ public class Portfolio {
     @JoinColumn(name = "clientId", nullable = false)
     private Client client;
 
-    @OneToMany(mappedBy = "portfolio", cascade = CascadeType.ALL)
-    private List<PortfolioSecurity> portfolioSecurities;
-
-    protected Portfolio() {
+    // Initialized to an empty list to prevent null pointers
+    @OneToMany(mappedBy = "portfolio", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<PortfolioSecurity> portfolioSecurities = new ArrayList<>();
+    public Portfolio() {
         // Default constructor for JPA
     }
 
