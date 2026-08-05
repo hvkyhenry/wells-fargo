@@ -84,4 +84,9 @@ public class Advisor {
     public void setEmail(String email) {
         this.email = email;
     }
+
+    //Getting the list of clients for this advisor
+    public List<Client> getClients() {
+        return clients;
+    }
 }
