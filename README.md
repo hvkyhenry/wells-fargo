@@ -39,8 +39,8 @@ To get a local copy up and running, follow these simple steps.
 This project is actively being developed. Here are the next steps planned to build a production-grade backend system:
 
 - [✅ ] **Implement Service and Repository Layers:** Build out the business logic and data access layers.
-- [ ] **Build REST API Controllers:** Expose the service layer functionality through RESTful endpoints.
-- [ ] **Introduce Data Transfer Objects (DTOs):** Decouple the API from the database entities for better security and flexibility.
+- [✅ ] **Build REST API Controllers:** Expose the service layer functionality through RESTful endpoints.
+- [✅ ] **Introduce Data Transfer Objects (DTOs):** Decouple the API from the database entities for better security and flexibility.
 - [ ] **Add Input Validation:** Ensure data integrity by validating all incoming API requests.
 - [ ] **Implement Global Exception Handling:** Create a centralized system for handling application errors gracefully.
 - [ ] **Secure the API with Spring Security:**
