@@ -10,8 +10,8 @@ import java.util.Optional;
 public interface AdvisorRepository extends JpaRepository<Advisor, Long> {
     
     // Custom query method to check if an email already exists
-    boolean existsByEmailAddress(String emailAddress);
+    boolean existsByEmail(String email);
     
     // Optional lookup by email for authentication workflows
-    Optional<Advisor> findByEmailAddress(String emailAddress);
+    Optional<Advisor> findByEmail(String email);
 }

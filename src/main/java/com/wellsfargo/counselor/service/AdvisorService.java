@@ -20,7 +20,7 @@ public class AdvisorService {
     @Transactional
     public Advisor createAdvisor(Advisor advisor) {
         // Business Rule: Ensure email address is unique across all advisors
-        if (advisorRepository.existsByEmailAddress(advisor.getEmail())) {
+        if (advisorRepository.existsByEmail(advisor.getEmail())) {
             throw new IllegalArgumentException("Advisor with email " + advisor.getEmail() + " already exists.");
         }
         return advisorRepository.save(advisor);

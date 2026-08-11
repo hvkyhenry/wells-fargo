@@ -49,7 +49,7 @@ public class PortfolioService {
             throw new RuntimeException("Advisor does not own the client with id: " + clientId);
         }
 
-        return portfolioRepository.findByClientId(clientId);
+        return portfolioRepository.findByClientClientId(clientId);
     }
 
     //Calculate the total value of a Portfolio

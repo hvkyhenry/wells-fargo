@@ -16,5 +16,6 @@ public interface SecurityMapper {
     List<SecurityResponse> toResponseList(List<Security> securities);
 
     @Mapping(target = "securityId", ignore = true)
+    @Mapping(target = "portfolioSecurities", ignore = true)
     Security toEntity(SecurityRequest request);
 }
