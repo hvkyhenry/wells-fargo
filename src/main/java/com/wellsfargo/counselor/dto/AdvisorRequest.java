@@ -1,11 +1,28 @@
 package com.wellsfargo.counselor.dto;
+import jakarta.validation.constraints.*;
 
 public class AdvisorRequest {
 
+    @NotBlank(message="First name is required")
+    @Size(min=2, max=50, message="First name must be between 2 and 50 characters")
     private String firstName;
+
+    @NotBlank(message="Last name is required")
+    @Size(min=2, max=50, message="Last name must be between 2 and 50 characters")
     private String lastName;
+
+    @NotBlank(message="Address is required")
     private String address;
+
+    @NotBlank(message="Phone number is required")
+    @Pattern(
+        regexp = "^\\+?[0-9. ()-]{7,25}$",
+        message = "Phone number must be valid and contain between 7 and 25 digits"
+    )
     private String phone;
+
+    @NotBlank(message="Email is required")
+    @Email(message="Email should be valid")
     private String email;
 
     public AdvisorRequest() {

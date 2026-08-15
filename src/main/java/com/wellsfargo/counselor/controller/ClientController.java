@@ -5,7 +5,7 @@ import com.wellsfargo.counselor.service.ClientService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
+import jakarta.validation.Valid;
 
 import java.util.List;
 
@@ -22,7 +22,7 @@ public class ClientController {
     // CREATE: Add a new client for a specific advisor
     @PostMapping
     public ResponseEntity<Client> createClient(@PathVariable Long advisorId, 
-                                              @RequestBody Client client) {
+                                              @Valid @RequestBody Client client) {
         Client created = clientService.createClient(client, advisorId);
         return new ResponseEntity<>(created, HttpStatus.CREATED);
     }
@@ -37,7 +37,7 @@ public class ClientController {
     @PutMapping("/{clientId}")
     public ResponseEntity<Client> updateClient(@PathVariable Long advisorId,
                                                 @PathVariable Long clientId,
-                                                @RequestBody Client updatedData) {
+                                                @Valid @RequestBody Client updatedData) {
         Client updated = clientService.updateClient(advisorId, clientId, updatedData);
         return ResponseEntity.ok(updated);
     }

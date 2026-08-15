@@ -1,12 +1,25 @@
 package com.wellsfargo.counselor.dto;
 
+import jakarta.validation.constraints.*;
+
 import java.time.LocalDate;
 
 public class PortfolioSecurityRequest {
 
+    @NotNull(message="Security ID is required")
+    @Positive(message="Security ID must be a positive number")
     private long securityId;
+
+    @NotNull(message="Purchase date is required")
+    @PastOrPresent(message="Purchase date cannot be in the future")
     private LocalDate purchaseDate;
+
+    @NotNull(message="Purchase price is required")
+    @Positive(message="Purchase price must be a positive number")
     private double purchasePrice;
+
+    @NotNull(message="Quantity is required")
+    @Min(value=1, message="Quantity must be at least 1")
     private int quantity;
 
     public PortfolioSecurityRequest() {

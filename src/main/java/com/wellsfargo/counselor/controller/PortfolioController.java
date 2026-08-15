@@ -5,7 +5,7 @@ import com.wellsfargo.counselor.service.PortfolioService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
+import jakarta.validation.Valid;
 import java.math.BigDecimal;
 import java.util.List;
 
@@ -23,7 +23,7 @@ public class PortfolioController {
     @PostMapping("/client/{clientId}")
     public ResponseEntity<Portfolio> createPortfolio(@PathVariable Long advisorId,
                                                      @PathVariable Long clientId,
-                                                     @RequestParam String portfolioName) {
+                                                     @Valid @RequestParam String portfolioName) {
         Portfolio portfolio = portfolioService.createPortfolio(advisorId, clientId, portfolioName);
         return new ResponseEntity<>(portfolio, HttpStatus.CREATED);
     }

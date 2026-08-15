@@ -5,6 +5,7 @@ import com.wellsfargo.counselor.service.AdvisorService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import jakarta.validation.Valid;
 
 import java.util.List;
 
@@ -21,7 +22,7 @@ public class AdvisorController {
 
     // CREATE: Register a new advisor -> HTTP 201 Created
     @PostMapping
-    public ResponseEntity<Advisor> createAdvisor(@RequestBody Advisor advisor) {
+    public ResponseEntity<Advisor> createAdvisor(@Valid @RequestBody Advisor advisor) {
         Advisor created = advisorService.createAdvisor(advisor);
         return new ResponseEntity<>(created, HttpStatus.CREATED);
     }
@@ -41,7 +42,7 @@ public class AdvisorController {
     // UPDATE: Update advisor profile -> HTTP 200 OK
     @PutMapping("/{advisorId}")
     public ResponseEntity<Advisor> updateAdvisor(@PathVariable Long advisorId, 
-                                                @RequestBody Advisor updatedData) {
+                                                @Valid @RequestBody Advisor updatedData) {
         Advisor updated = advisorService.updateAdvisor(advisorId, updatedData);
         return ResponseEntity.ok(updated);
     }

@@ -5,7 +5,7 @@ import com.wellsfargo.counselor.service.SecurityService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
+import jakarta.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -20,7 +20,7 @@ public class SecurityController {
 
     // CREATE: Add a new security to the catalog
     @PostMapping
-    public ResponseEntity<Security> createSecurity(@RequestBody Security security) {
+    public ResponseEntity<Security> createSecurity(@Valid @RequestBody Security security) {
         Security created = securityService.createSecurity(security);
         return new ResponseEntity<>(created, HttpStatus.CREATED);
     }
@@ -40,7 +40,7 @@ public class SecurityController {
     // UPDATE: Update security metadata
     @PutMapping("/{securityId}")
     public ResponseEntity<Security> updateSecurity(@PathVariable Long securityId,
-                                                   @RequestBody Security updatedData) {
+                                                   @Valid @RequestBody Security updatedData) {
         return ResponseEntity.ok(securityService.updateSecurity(securityId, updatedData));
     }
 
